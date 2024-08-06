@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'includes/head.html' %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{% include 'includes/header.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'includes/footer.html' %}
+{% include 'includes/footer-refrence.html' %}
+</body>
+</html>
