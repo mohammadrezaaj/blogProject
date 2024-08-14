@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-kx@+$+cm=^cb*67ki9ud)+zuntfadgrmx%tf5+fl(tlm&6u8z$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # 'd163-2-176-49-236.ngrok-free.app',
+                 ]
 
 
 # Application definition
@@ -38,6 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home_app.apps.HomeAppConfig',
+    'article_app.apps.ArticleAppConfig',
+    'product_app.apps.ProductAppConfig',
+    # 'account_app.apps.AccountAppConfig',
+    'psycopg2',
+    'jalali_date',
+    'django_render_partial'
+
 
 ]
 
@@ -78,8 +87,12 @@ WSGI_APPLICATION = 'accounting_web_Bv.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'accounting_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Moh@mmad86',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -106,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa-ir'
 
 TIME_ZONE = 'UTC'
 
@@ -117,7 +130,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
+STATIC_ROOT = BASE_DIR / 'assets/css'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -126,4 +139,9 @@ MEDIA_URL = "media/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#
+# AUTH_USER_MODEL = "account_app.User"
+
+# AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.ModelBackend",
+#                            "account_app.authentication.EmailAuthBackEnd"]

@@ -1,0 +1,76 @@
+{% extends "Base.html" %}
+{% load static %}
+{% load jalali_tags %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<section class="article-container-list">
+    <section class="content-articles">
+        <aside>
+            <section class="title">
+                <h2>دسته بندی مقالات</h2>
+            </section>
+
+                <ul class="navbar">
+                    {% for category in categories %}
+                        <li class="nav-item-articles"><a href="{% url 'article:category-list' category.title %}">{{ category.title }}</a></li>
+               {% endfor %}
+                </ul>
+
+        </aside>
+        <section class="articles-container">
+            <section class="product-container article-container article-page">
+                <section class="product-list product-list-page">
+                    {% for article in articles %}
+                    <section class="single-product single-article">
+                        <section class="product-img article-img"><img src="{{ article.image.url }}" alt="{{ article.title }} image"></section>
+                        <section class="article-title">
+                            <a href="{% url 'article:detail' article.slug %}">{{ article.title }}</a>
+                        </section>
+                        <section class="article-down">
+                            <p class="date">{{ article.created|to_jalali:'%y/%m/%d' }}</p>
+                            <p class="category">{{ article.category.title }}</p>
+
+                        </section>
+                    </section>
+
+                    {% endfor %}
+
+                </section>
+            </section>
+        </section>
+
+        </section>
+    <!--end on content-->
+    <!--pagination-->
+    <section class="pagination-container">
+
+        <section class="paginate">
+            {% if articles.has_previous %}
+            <section class="previous">
+                <a href="{% url 'article:list' %}?page={{ articles.previous_page_number }}?q={{ request.GET.q }}" class="fa fa-angle-double-left"></a>
+            </section>
+            {% endif %}
+            <section class="pages">
+                {% if articles.has_previous %}
+                    <a href="{% url 'article:list' %}?page={{ articles.previous_page_number }}?q={{ request.GET.q }}">{{ articles.previous_page_number }}</a>
+                {% endif %}
+
+                <a class="activate">{{ articles.number }}</a>
+
+                {% if articles.has_next %}
+                 <a href="{% url 'article:list' %}?page={{ articles.next_page_number }}?q={{ request.GET.q }}">{{ articles.next_page_number }}</a>
+                {% endif %}
+
+            </section>
+            {% if articles.has_next %}
+            <section class="next">
+                <a href="{% url 'article:list' %}?page={{ articles.next_page_number }}?q={{ request.GET.q }}" class="fa fa-angle-double-right"></a>
+            </section>
+            {% endif %}
+
+        </section>
+    </section>
+</section>
+{% endblock %}

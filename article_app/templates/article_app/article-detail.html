@@ -1,0 +1,74 @@
+{% extends 'Base.html' %}
+{% load static %}
+{% load jalali_tags %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+
+    <section class="article-detail-container">
+        <section class="article-info">
+            <section class="address">
+                <p><a href="/">صحفه اصلی</a>/<a href="{% url 'article:list' %}">وبلاگ</a>/<a
+                        href="{% url 'article:detail' article.slug %}">{{ article.title }}</a></p>
+            </section>
+            <section class="both">
+                <section class="author">
+                    <i class="fa fa-user"></i>
+                    <strong>:نویسنده </strong>
+                    <p> {{ article.author.first_name }} {{ article.author.last_name }}</p>
+                </section>
+                <section class="updated_at">
+                    <i class="fa fa-calendar"></i>
+                    <strong>:تاریخ اپدیت </strong>
+                    <p>{{ article.updated|to_jalali:'%y/%m/%d' }}</p>
+                </section>
+            </section>
+        </section>
+        <section class="article-main">
+            <section class="title">
+                <h1>{{ article.title }}</h1>
+            </section>
+            <section class="detail">
+                <section class="banner">
+                    <img src="{{ article.image.url }}" alt="{{ article.title }} image">
+                </section>
+                {% for line in article.lines.all %}
+                    {% if line.title %}
+                        <section class="title">
+                            <h4>{{ line.title }}</h4>
+                        </section>
+                    {% endif %}
+                    {% if line.body %}
+                        <section class="info">
+                            <p>{{ line.body }}</p>
+                        </section>
+                    {% endif %}
+                    {% if line.image %}
+                        <section class="image">
+                            <img src="{{ line.image.url }}" alt="{{ line.title }} image">
+                        </section>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        </section>
+    </section>
+
+    <section class="opinion-form">
+        <section class="title">
+            <h2>دیدگاهتان را بنویسید</h2>
+        </section>
+        <form action="" method="post">
+
+            <label>نام</label>
+            <input type="text" name="name" placeholder="نام کامل را وارد کنید">
+            <label>ایمیل</label>
+            <input type="text" name="email" placeholder="ایمیل را وارد کنید">
+            <label>نظر</label>
+            <textarea name="idea" id="idea"></textarea>
+            <button>ارسال دیدگاه</button>
+        </form>
+    </section>
+
+
+{% endblock %}

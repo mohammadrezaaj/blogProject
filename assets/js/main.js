@@ -8,13 +8,14 @@ const category = document.getElementById('category');
 const categorylist = document.getElementById('categorylist');
 const down = document.getElementById('down');
 const body = document.getElementsByTagName('header');
-
+const navItemHome = document.getElementById('nav-item-home')
+const navItemList = document.getElementById('nav-item-list')
 // const eye_control = document.querySelectorAll('#eye-control');
+
 
 const customer_slider = document.querySelector('.clients-list');
 const product_slider = document.querySelector('#slider');
 const article_slider = document.querySelector('.product-list.slider');
-console.log(article_slider);
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -30,7 +31,7 @@ function display_sleep(){
 }
 category.addEventListener('mouseenter', () => {
     categorylist.style.display = 'flex';
-
+    categorylist.style.zIndex = '999';
     down.style.transform = 'rotateZ(220deg)';
     setTimeout(() => {
     categorylist.style.opacity = '1';
@@ -75,11 +76,30 @@ categorylist.addEventListener('mouseleave', () => {
     down.style.transform = 'rotateZ(45deg)';
 })
 
+
+
+navItemHome.addEventListener('mouseenter', () =>{
+        categorylist.style.opacity = '0';
+    categorylist.classList.remove('entered');
+        down.style.transform = 'rotateZ(45deg)';
+    setTimeout(() => {
+        categorylist.style.display = 'none';
+
+    }, 500);
+})
+navItemList.addEventListener('mouseenter', () =>{
+        categorylist.style.opacity = '0';
+    categorylist.classList.remove('entered');
+        down.style.transform = 'rotateZ(45deg)';
+    setTimeout(() => {
+        categorylist.style.display = 'none';
+
+    }, 500);
+
+})
 function isEntered() {
     return categorylist.classList.contains('entered');
 }
-
-
 // eye_control.addEventListener('click', () =>{
 //     eye_control.classList.add('choosed')
 //     product_image.style.display = 'flex';
@@ -101,11 +121,13 @@ menu_close.addEventListener('click', () => {
 
     }, 300);
 })
-menu_open.addEventListener('click', () => {
 
+menu_open.addEventListener('click', () => {
+    document.documentElement.style.height = '0';
+    document.documentElement.style.overflow = 'hidden';
     // top_bar.style.transition = "left 1s ease-in";
-    
     top_bar.style.display ='flex';
+    
     setTimeout(() => {
         top_bar.style.transform ='translateX(0)';
 
@@ -146,29 +168,6 @@ customer_slider.addEventListener('mousemove', (e) => {
     const X = e.pageX;
     const walk = (X - startX)/10;
     customer_slider.scrollLeft -= walk;
-});
-
-product_slider.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    isDown = true;
-    product_slider.classList.add('activeS');
-    startX = e.pageX;
-    console.log(startX);
-});
-product_slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    product_slider.classList.remove('activeS');
-});
-product_slider.addEventListener('mouseup', () => {
-    isDown = false;
-    product_slider.classList.remove('activeS');
-});
-product_slider.addEventListener('mousemove', (e) => {
-    if(!isDown)return;
-    e.preventDefault();
-    const X = e.pageX;
-    const walk = (X - startX) *2;
-    product_slider.scrollLeft -= walk;
 });
 
 article_slider.addEventListener('mousedown', (e) => {

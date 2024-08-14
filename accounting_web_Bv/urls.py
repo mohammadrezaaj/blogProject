@@ -23,5 +23,7 @@ from accounting_web_Bv import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home_app.urls')),
+    path('product/', include('product_app.urls')),
+    path('article/', include('article_app.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

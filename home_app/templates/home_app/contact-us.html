@@ -1,0 +1,73 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <section class="main-content">
+        <section class="content-upper  ">
+            <section class="upper-img">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+            <section class="upper-desc mg-0">
+                <section class="address">
+                    <p><a href="/">صحفه اصلی</a>/<a href="{% url 'home:contact-us' %}">تماس با ما</a></p>
+                </section>
+                <section class="contact-title">
+                    <strong> تماس با </strong>
+                    <h1>شرکت ایکس </h1>
+                </section>
+                <section class="contact-desc">
+                    <p>راه های ارتباط با ما</p>
+
+                </section>
+                <section class="cantact-address">
+                    <section class="content right">
+                        <ul class="adress-contact">
+                            <li>
+                                <i class="fa fa-building-o"></i><span>شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-building-o"></i><span>شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی </span>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section class="content right">
+                    <ul class="adress-contact full">
+                        <li class="border">
+                            <p>عنوان</p>
+                            <i class="fa fa-phone"></i><a href=""><span>09123456789</span></a>
+                        </li>
+                        <li class="border">
+                            <p>عنوان</p>
+                            <i class="fa fa-phone"></i><a href=""><span>09123456789</span></a>
+                        </li>
+                    </ul>
+                </section>
+        </section>
+    </section>
+</section>
+
+
+<section class="contact bg-blue">
+    <section class="form-container bg-white">
+        <h5>جهت ارتباط سریع تر فرم زیر را پر کنید</h5>
+        <p>همکاران ما در اسرع وقت با شما تماس میگیرن</p>
+        <form action="" method="post">
+            <div class="both">
+                <label for="name">نام و نام خانوادگی</label>
+            <input type="text" id="name" name="name" placeholder="نام و نام خانوادگی">
+
+            </div>
+            <div class="both">
+                <label for="phone">شماره موبایل</label>
+            <input type="text" pattern="[0-9]" id="phone" name="phone" placeholder="شماره موبایل">
+
+            </div>
+            <button type="submit"><span></span>ارسال</button>
+        </form>
+    </section>
+</section>
+
+{% endblock %}

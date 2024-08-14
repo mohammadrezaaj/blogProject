@@ -1,0 +1,51 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+
+    <section class="base-container">
+        <section class="info-container">
+
+        </section>
+
+        <section class="files-container">
+            <section class="title">
+                <h1>لیست فایل های اکسل</h1>
+            </section>
+            <section class="files-list">
+                <ul id="product-image">
+                {% if exel_list %}
+                    {% for exel in exel_list %}
+                        <li>
+                        <a href="{% url 'product:download' exel.slug %}">
+                            {{ exel.title }}
+                        </a>
+                        <span>
+                            <a  href="{% url 'product:download' exel.slug %}">
+                                {{ exel.click_count }}<i class="fa fa-download"></i></a>
+                            <i id="eye-control" class="fa fa-eye">
+                                <img src="{{ exel.image.url }}" alt="{{ exel.title }} تصویر ">
+                            </i>
+                        </span>
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <section class="no_product">
+                        <h2>در حال حاظر هیج فایل قابل دانلود موجود نمی باشد</h2>
+                    </section>
+                {% endif %}
+
+
+
+                </ul>
+            </section>
+
+            <section  class="product-image"><img src="" alt=""><i id="product-image-close" class="fa fa-close btn-close"></i></section>
+
+        </section>
+    </section>
+
+{% endblock %}
