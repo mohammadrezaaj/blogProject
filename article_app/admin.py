@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from article_app import models
 
+
 class FilterByTitle(admin.SimpleListFilter):
     title = 'کلید های پر تکرار'
     parameter_name = 'title'
@@ -29,12 +30,18 @@ class ArticleInLine(admin.StackedInline):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title','created']
 
+
 @admin.register(models.Article)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['__str__','title','author','published','click_count']
+    list_display = ['__str__', 'title', 'author', 'published', 'click_count']
     list_editable = ['published']
     list_filter = ('published', FilterByTitle)
     search_fields = ('title', 'body', 'auther')
     readonly_fields = ['click_count']
     inlines = (ArticleInLine,)
-    prepopulated_fields = {'slug':['title',]}
+    prepopulated_fields = {'slug': ['title', ]}
+
+
+@admin.register(models.ArticleMessage)
+class ArticleMessage(admin.ModelAdmin):
+    list_display = ['__str__']

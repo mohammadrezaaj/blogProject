@@ -17,4 +17,5 @@ class ProductDownloadView(View):
         exel_files = models.ExelFiles
         exel_file = get_object_or_404(exel_files, slug=uri_to_iri(slug))
         exel_file.click_count += 1
+        exel_file.save()
         return FileResponse(exel_file.file, as_attachment=True)

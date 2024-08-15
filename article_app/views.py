@@ -5,6 +5,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from article_app import models
+from article_app.Forms import ArticleMessageForm
 
 
 class ArticleListView(View):
@@ -51,9 +52,34 @@ class NavbarPartialView(TemplateView):
         context = super(NavbarPartialView, self).get_context_data()
         context['categories'] = models.Category.objects.all()
         return context
+
+
 class ArticleDetailView(View):
+
     def get(self, request, slug):
+        form = ArticleMessageForm()
         articles = models.Article
         article = get_object_or_404(articles, slug=uri_to_iri(slug))
         article.click_count += 1
-        return render(request, 'article_app/article-detail.html', {'article': article})
+        article.save()
+        context = {
+            'article': article,
+            'form': form,
+        }
+        return render(request, 'article_app/article-detail.html', context)
+
+    def post(self, request, slug):
+        articles = models.Article
+        article = get_object_or_404(articles, slug=uri_to_iri(slug))
+        form = ArticleMessageForm(data=request.POST)
+
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.article = article
+            instance.save()
+
+        context = {
+            'article': article,
+            'form': form,
+        }
+        return render(request, 'article_app/article-detail.html', context)

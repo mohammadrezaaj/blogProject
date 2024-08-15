@@ -44,20 +44,6 @@ class Article(models.Model):
         verbose_name_plural = 'مقالات'
 
 
-class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE,
-                                related_name='comments', verbose_name='مقالات')
-    body = models.TextField(verbose_name='متن')
-    created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.article.title} - {self.body[:30]}"
-
-    class Meta:
-        verbose_name = 'کامنت'
-        verbose_name_plural = 'کامنت ها'
-
-
 class ArticleInline(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name='lines', verbose_name='مقاله')
@@ -71,3 +57,17 @@ class ArticleInline(models.Model):
     class Meta:
         verbose_name = 'سطر'
         verbose_name_plural= "سطرها"
+
+
+class ArticleMessage(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='message', verbose_name='مقاله')
+    fullname = models.CharField(max_length=128, verbose_name="نام و نام خانوادگی")
+    phone = models.PositiveIntegerField(verbose_name='شماره موبایل',max_length=11)
+    message = models.TextField(verbose_name='پیام',)
+
+    def __str__(self):
+        return f'{self.fullname} - {self.message[:50]}...'
+
+    class Meta:
+        verbose_name = 'نطر'
+        verbose_name_plural = "نظرات"

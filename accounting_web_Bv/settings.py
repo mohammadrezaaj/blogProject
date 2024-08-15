@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-kx@+$+cm=^cb*67ki9ud)+zuntfadgrmx%tf5+fl(tlm&6u8z$
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'd163-2-176-49-236.ngrok-free.app',
+    # '7f7c-217-218-77-252.ngrok-free.app',
                  ]
 
 
@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     # 'account_app.apps.AccountAppConfig',
     'psycopg2',
     'jalali_date',
-    'django_render_partial'
+    'django_render_partial',
+    'django_cleanup',
 
 
 ]

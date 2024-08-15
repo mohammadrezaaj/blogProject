@@ -58,12 +58,12 @@
         <section class="title">
             <h2>دیدگاهتان را بنویسید</h2>
         </section>
-        <form action="" method="post">
-
+        <form action="{% url 'article:detail' article.slug %}" method="post">
+            {% csrf_token %}
             <label>نام</label>
             <input type="text" name="name" placeholder="نام کامل را وارد کنید">
             <label>ایمیل</label>
-            <input type="text" name="email" placeholder="ایمیل را وارد کنید">
+            <input type="tel" name="email" placeholder="موبایل را وارد کنید">
             <label>نظر</label>
             <textarea name="idea" id="idea"></textarea>
             <button>ارسال دیدگاه</button>
