@@ -1,0 +1,52 @@
+#site-name{
+    font-weight: 500;
+    box-shadow: 1px 1px 3px #001639;
+    padding: .5rem;
+    border-radius: 5px;
+}
+#site-name a:visited{
+    color: #00fd79;
+}
+#header{
+    background: linear-gradient(90deg , #044ab9, #013a94);
+}
+#user-tools button[type="submit"]{
+    padding: .3rem .3rem .2rem .3rem;
+    border-bottom: 1px solid;
+}
+#user-tools button[class="theme-toggle"]{
+    padding: .3rem .3rem .3rem .3rem;
+    border-bottom: none;
+}
+.theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light{
+    color: transparent;
+}
+/*.theme-toggle svg.theme-icon-when-auto,.theme-toggle  svg.theme-icon-when-dark,.theme-toggle  svg.theme-icon-when-light:hover{*/
+/*    box-shadow: 0 0 3px ;*/
+/*}*/
+button.theme-toggle{
+    transition: box-shadow .3s ease;
+    padding: .3rem;
+    border-radius: 999px;
+
+}
+.theme-toggle:hover{
+    box-shadow: 0 0 .3rem ;
+}
+h1{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+#user-tools a{
+    padding: .2rem;
+    border-bottom: 1px solid ;
+}
+#user-tools button{
+    padding: .3rem .3rem .2rem .3rem;
+    border-bottom: 1px solid;
+}
+
+div.breadcrumbs{
+    background: #044ab9;
+    border-block: 1px solid #fff;
+}

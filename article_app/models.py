@@ -48,7 +48,7 @@ class ArticleInline(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name='lines', verbose_name='مقاله')
     title = models.CharField(max_length=128, verbose_name='عنوان', blank=True, null=True)
-    body = models.TextField(max_length=1024, verbose_name='متن', blank=True, null=True)
+    body = models.TextField(max_length=2048, verbose_name='متن', blank=True, null=True)
     image = models.ImageField(upload_to='images/article/inline', verbose_name='تصویر', blank=True, null=True)
 
     def __str__(self):
@@ -62,7 +62,7 @@ class ArticleInline(models.Model):
 class ArticleMessage(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='message', verbose_name='مقاله')
     fullname = models.CharField(max_length=128, verbose_name="نام و نام خانوادگی")
-    phone = models.PositiveIntegerField(verbose_name='شماره موبایل',max_length=11)
+    phone = models.PositiveBigIntegerField(verbose_name='شماره موبایل',max_length=11)
     message = models.TextField(verbose_name='پیام',)
 
     def __str__(self):

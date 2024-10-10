@@ -8,15 +8,12 @@
         <p>شرکت هایی که یه ما اعتماد کرده اند</p>
     </section>
     <section class="clients-list">
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
-        <section class="single-client"><img src="" alt=""></section>
+        {% for customer in customers %}
+            <section class="single-client"><img src="{{ customer.image.url }}" alt="{{ customer.title }} banner">
+            </section>
+
+        {% endfor %}
+
     </section>
 </section>
 <!-- customers part end -->
@@ -30,10 +27,11 @@
                     <h6>صفحات ایرانمهر رایکا</h6>
                 </section>
                 <ul>
-                    <li><a href="">مقالات </a></li>
-                    <li><a href="">درباره ما</a></li>
-                    <li><a href="">تماس با ما</a></li>
-                    <li><a href="">فایل های اکسل</a></li>
+                    <li><a href="{% url 'home:book' %}">کتاب قوانبن</a></li>
+                    <li><a href="{% url 'article:list' %}">مقالات </a></li>
+                    <li><a href="{% url 'home:about-us' %}">درباره ما</a></li>
+                    <li><a href="{% url 'home:contact-us' %}">تماس با ما</a></li>
+                    <li><a href="{% url 'product:filelist' %}">فایل های اکسل</a></li>
                 </ul>
             </section>
             <section class="social">
@@ -41,10 +39,9 @@
                     <h6>شبکه های اجتماعی</h6>
                 </section>
                 <section class="social-list">
-                    <a href=""><i class="fa fa-whatsapp"></i></a>
-                    <a href=""><i class="fa fa-telegram"></i></a>
-                    <a href=""><i class="fa fa-instagram"></i></a>
-                    <a href=""><i class=""></i></a>
+                    <a href="https://wa.me/09190323096"><i class="fa fa-whatsapp white"></i></a>
+                    <a href="tg://user?id=123456789"><i class="fa fa-telegram white"></i></a>
+                    <a href="instagram://user?username={username}"><i class="fa fa-instagram white"></i></a>
                 </section>
             </section>
     </section>
@@ -56,23 +53,23 @@
         <section class="content">
             <ul class="adress-contact">
                 <li>
-                    <i class="fa fa-building-o"></i><span>شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی </span>
+                    <i class="fa fa-building-o white"></i><span>شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی </span>
                 </li>
                 <li>
-                    <i class="fa fa-phone"></i><a href=""><span>09123456789</span></a>
+                    <i class="fa fa-phone white"></i><a href="tel:555-666-7777"><span>09123456789</span></a>
                 </li>
                 <li>
-                    <i class="fa fa-phone"></i><a href=""><span>09123456789</span></a>
+                    <i class="fa fa-phone white"></i><a href="tel:555-666-7777"><span>09123456789</span></a>
                 </li>
             </ul>
         </section>
     </section>
 
     <section class="enamad">
-        <a href="">
-            <img src="" alt="">
+        <a href="#">
+            <img src="" alt="enamad logo">
         </a>
-        <a class="creator" href="">
+        <a class="creator" href="#">
             <strong>: تیم طراحان</strong>
             <p>محمدرضا آقاجانی</p>
         </a>

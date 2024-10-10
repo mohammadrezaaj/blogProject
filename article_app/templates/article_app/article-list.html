@@ -14,8 +14,9 @@
 
                 <ul class="navbar">
                     {% for category in categories %}
-                        <li class="nav-item-articles"><a href="{% url 'article:category-list' category.title %}">{{ category.title }}</a></li>
-               {% endfor %}
+                        <li class="nav-item-articles"><a
+                                href="{% url 'article:category-list' category.title %}">{{ category.title }}</a></li>
+                    {% endfor %}
                 </ul>
 
         </aside>
@@ -23,17 +24,24 @@
             <section class="product-container article-container article-page">
                 <section class="product-list product-list-page">
                     {% for article in articles %}
-                    <section class="single-product single-article">
-                        <section class="product-img article-img"><img src="{{ article.image.url }}" alt="{{ article.title }} image"></section>
-                        <section class="article-title">
-                            <a href="{% url 'article:detail' article.slug %}">{{ article.title }}</a>
-                        </section>
-                        <section class="article-down">
-                            <p class="date">{{ article.created|to_jalali:'%y/%m/%d' }}</p>
-                            <p class="category">{{ article.category.title }}</p>
-
-                        </section>
+                        <section class="single-product single-article">
+                             <section class="product-img article-img">
+                        {% if article.image %}
+                            <a title="image of {{ article.title }} article" title="explore {{article.title }} detail page" href="{% url 'article:detail' article.slug %}">
+                        <img src="{{ article.image.url }}" alt="{{ article.title }} image">
+                            </a>
+                        {% endif %}
                     </section>
+                            <section class="article-title">
+                                <a href="{% url 'article:detail' article.slug %}">{{ article.title }}</a>
+                            </section>
+                            <section class="article-down">
+                                <p class="date">{{ article.created|to_jalali:'%y/%m/%d' }}</p>
+                                <a href="{% url 'article:category-list' article.category.title %}"><p
+                                        class="category">{{ article.category.title }}</p></a>
+
+                            </section>
+                        </section>
 
                     {% endfor %}
 
@@ -41,7 +49,7 @@
             </section>
         </section>
 
-        </section>
+    </section>
     <!--end on content-->
     <!--pagination-->
     <section class="pagination-container">

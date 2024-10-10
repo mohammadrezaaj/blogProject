@@ -10,13 +10,14 @@ class ArticleMessageForm(forms.ModelForm):
 
         widgets = {
             'fullname': forms.TextInput(attrs={
-                'placeholder':'نام کامل را وارد کنید',
+                'placeholder': 'نام کامل را وارد کنید',
 
             }),
             'phone': forms.TextInput(attrs={
-                'placeholder':'شماره موبایل را وارد کنید'
+                'placeholder': 'شماره موبایل را وارد کنید'
             }),
             'message': forms.Textarea(attrs={
-                'placeholder':'دیدگاهتان را بنویسید'
+                'placeholder': 'دیدگاهتان را بنویسید',
+                'id': 'message',
             })
         }

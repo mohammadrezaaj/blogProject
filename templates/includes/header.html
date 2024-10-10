@@ -2,15 +2,17 @@
 <header>
     <section class="container">
         <section class="logo">
-            <img src="{% static 'icons/سایز اصلی.png' %}" alt="logo">
+            <a href="/">
+                <img src="{% static 'icons/سایز اصلی.png' %}" alt="logo">
+            </a>
         </section>
         <section id="top-bar" class="top-bar">
             <nav>
                 <ul class="navbar">
-                    <li><a href="/" id="nav-item-home"
-                           class="nav-item{% if request.resolver_match.url_name == 'main' %} active{% endif %}"><i
-                            class="fa fa-home"></i>
-                        <p>کتاب قوانبن</p></a></li>
+                    <li><a href="{% url 'home:book' %}" id="nav-item-home"
+                           class="nav-item{% if request.resolver_match.url_name == 'book' %} active{% endif %}"><i
+                            class="fa fa-book"></i>
+                        <p>کتاب قوانین</p></a></li>
                     <li><a href="{% url 'article:list' %}"
                            class="nav-item{% if request.resolver_match.url_name == 'list' %} active{% endif %}"
                            id="category"><i
@@ -28,9 +30,10 @@
 
                     </li>
                     <li><a id="nav-item-list"
-                           href="{% url 'product:filelist' %}" class="nav-item{% if request.resolver_match.url_name == 'filelist' %} active{% endif %}"> <i
-                            class="fa fa-file-excel-o"></i>
-                        <p>فایل های اکسل</p></a>
+                           href="{% url 'product:filelist' %}" class="nav-item{% if request.resolver_match.url_name == 'filelist' %} active{% endif %}">
+                        <i
+                                class="fa fa-file-excel-o"></i>
+                        <p>فایل های کاربردی</p></a>
                     </li>
                     <li><a href="{% url 'home:contact-us' %}"
                            class="nav-item{% if request.resolver_match.url_name == 'contact-us' %} active{% endif %} ">
@@ -62,12 +65,16 @@
             </nav>
             <div class="exit"><i id="menu_close" class="fa fa-times"></i></div>
         </section>
-        <div class="parent">
-            <section id="search-bar" class="search-bar">
-                <input type="text" name="q-search" placeholder="جست و جو..." class="search" id="search">
-                <a id="search-bar-close"><i class="fa fa-times"></i></a>
-            </section>
-        </div>
+
+            <div class="parent">
+                <form action="{% url 'article:searchs' %}" method="get">
+                <section id="search-bar" class="search-bar">
+                    <input type="text" name="q" placeholder="جست و جو در بلاگ..." class="search" id="search">
+                    <a id="search-bar-close"><i class="fa fa-times"></i></a>
+                </section>
+                    </form>
+            </div>
+
         <section class="search-bar-icon">
             <i id="search-bar-open" class="fa fa-search"></i>
         </section>

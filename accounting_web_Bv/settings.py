@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-kx@+$+cm=^cb*67ki9ud)+zuntfadgrmx%tf5+fl(tlm&6u8z$
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # '7f7c-217-218-77-252.ngrok-free.app',
+    # '*'
+    # '87d7-2-190-86-214.ngrok-free.app',
                  ]
 
 
@@ -131,9 +132,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-STATIC_ROOT = BASE_DIR / 'assets/css'
 STATIC_URL = 'static/'
+
+# if DEBUG:
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
+# else:
+STATIC_ROOT = BASE_DIR / 'assetsfiles'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "media/"
 

@@ -1,0 +1,60 @@
+{% extends 'Base.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+    <section class="article-detail-container">
+        <section class="article-info">
+            <section class="sticky">
+                <section class="book-search-container"  id="searchbar">
+                <section class="searchbar">
+                    <input type="text" placeholder="عنوان مورد نظر را تایپ کنید">
+                    <i class="fa fa-search" id="search-btn"></i>
+                </section>
+            </section>
+            <section class="title">
+                <h1>سر فصل های کتاب</h1>
+            </section>
+            <ul>
+                {% if book.lines.all %}
+                    {% for line in book.lines.all %}
+                        <li onclick="findString('{{ line.title }}')">{{ line.title }}</li>
+                    {% endfor %}
+                {% endif %}
+
+            </ul>
+            </section>
+        </section>
+        {% if book %}
+            <section class="article-main">
+                {% if book.title %}
+                    <section class="title">
+                        <h2 class="book-title">{{ book.title }}</h2>
+                    </section>
+                {% endif %}
+                <section class="detail">
+                    {% if book.image.url %}
+                        <section class="banner"><img src="{{ book.image.url }}" alt="image of {{ book.title }} book"></section>
+                    {% endif %}
+                    {% if book.lines.all %}
+                        {% for line in book.lines.all %}
+                            <section class="title">
+                                <h4>{{ line.title }}</h4>
+                            </section>
+                            <section class="info">
+                                <p>{{ line.body }}</p>
+
+                            </section>
+                        {% endfor %}
+                    {% endif %}
+                </section>
+            </section>
+        {% endif %}
+        <section id="scroll-top" class="up-logo">
+            <i class="fa fa-arrow-up white"></i>
+        </section>
+    </section>
+    <script src="rule-book.html"></script>
+{% endblock %}

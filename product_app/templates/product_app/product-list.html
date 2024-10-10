@@ -13,16 +13,19 @@
 
         <section class="files-container">
             <section class="title">
-                <h1>لیست فایل های اکسل</h1>
+                <h1>لیست فایل های کاربردی</h1>
             </section>
             <section class="files-list">
                 <ul id="product-image">
                 {% if exel_list %}
                     {% for exel in exel_list %}
                         <li>
+                        <span>
+                            <i class="fa fa-file"></i>
                         <a href="{% url 'product:download' exel.slug %}">
                             {{ exel.title }}
                         </a>
+                        </span>
                         <span>
                             <a  href="{% url 'product:download' exel.slug %}">
                                 {{ exel.click_count }}<i class="fa fa-download"></i></a>
@@ -43,8 +46,7 @@
                 </ul>
             </section>
 
-            <section  class="product-image"><img src="" alt=""><i id="product-image-close" class="fa fa-close btn-close"></i></section>
-
+            <section  class="product-image"><img src="" alt=""><i id="product-image-close" class="fa fa-close btn-close white"></i></section>
         </section>
     </section>
 

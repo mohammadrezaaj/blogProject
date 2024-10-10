@@ -16,7 +16,7 @@
                 <section class="author">
                     <i class="fa fa-user"></i>
                     <strong>:نویسنده </strong>
-                    <p> {{ article.author.first_name }} {{ article.author.last_name }}</p>
+                    <a rev="made" href="http://instagram.com/_u/{mr.a_xi}"> {{ article.author.first_name }} {{ article.author.last_name }}</a>
                 </section>
                 <section class="updated_at">
                     <i class="fa fa-calendar"></i>
@@ -35,8 +35,8 @@
                 </section>
                 {% for line in article.lines.all %}
                     {% if line.title %}
-                        <section class="title">
-                            <h4>{{ line.title }}</h4>
+                        <section class="title at">
+                            <h2>{{ line.title }}</h2>
                         </section>
                     {% endif %}
                     {% if line.body %}
@@ -56,16 +56,16 @@
 
     <section class="opinion-form">
         <section class="title">
-            <h2>دیدگاهتان را بنویسید</h2>
+            <h3>دیدگاهتان را بنویسید</h3>
         </section>
-        <form action="{% url 'article:detail' article.slug %}" method="post">
+        <form action="{% url 'article:message' article.slug %}" method="post">
             {% csrf_token %}
             <label>نام</label>
-            <input type="text" name="name" placeholder="نام کامل را وارد کنید">
-            <label>ایمیل</label>
-            <input type="tel" name="email" placeholder="موبایل را وارد کنید">
+            {{ form.fullname }}
+            <label>شماره موبایل</label>
+            {{form.phone}}
             <label>نظر</label>
-            <textarea name="idea" id="idea"></textarea>
+            {{form.message}}
             <button>ارسال دیدگاه</button>
         </form>
     </section>
